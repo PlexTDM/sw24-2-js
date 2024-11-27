@@ -1,0 +1,505 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    overflow-y: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    color: white;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    height: 100%;
+    width: 70px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    background: rgb(43, 43, 43);
+}
+
+nav * {
+    z-index: 2;
+}
+
+nav .logo {
+    width: 100%;
+    padding: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(125, 125, 125);
+    height: min-content;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.logo i {
+    font-size: 25px;
+}
+
+nav .menu {
+    display: flex;
+    align-self: center;
+    color: white;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+nav .menu .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: rgb(147, 147, 147);
+    transition: 0.2s;
+}
+
+nav .menu .item i {
+    padding: 10px;
+}
+
+.item.selected {
+    border-left: 3px solid wheat;
+    font-size: 30px;
+    background: linear-gradient(90deg, rgba(245, 222, 179, 0.2) 5%, rgba(43, 43, 43, 0) 100%);
+    transition: 0.2s;
+    color: white !important;
+}
+
+nav .background {
+    background: rgb(43, 43, 43);
+    background: linear-gradient(210deg, rgba(43, 43, 43, 1) 0%, rgba(43, 43, 43, 1) 51%, rgba(53, 58, 135, 1) 69%, rgba(43, 43, 43, 1) 86%);
+    background-size: cover;
+    left: -15px;
+    right: -15px;
+    top: -15px;
+    bottom: -15px;
+    filter: blur(20px);
+    position: absolute;
+    z-index: 0;
+}
+
+nav .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    gap: 20px;
+}
+
+nav .notification {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+    padding: 10px;
+    color: rgb(240, 240, 240);
+    position: relative;
+}
+
+.notification .dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 5px;
+    aspect-ratio: 1/1;
+    background-color: red;
+    border-radius: 50px;
+}
+
+.pfp {
+    width: 45px;
+    aspect-ratio: 1/1;
+    border-radius: 50px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+
+.highlight {
+    width: 100%;
+    height: 55%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    /* overflow: hidden; */
+}
+
+.card {
+    background: rgb(43, 43, 43);
+    /* background: linear-gradient(135deg, rgba(43,43,43,1) 0%, rgba(43,43,43,1) 35%, rgba(53,58,135,1) 50%, rgba(43,43,43,1) 86%); */
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    z-index: 0;
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+}
+
+.highlight .weather {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.highlight .weather .zoom {
+    color: rgb(204, 204, 204);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 10px;
+    border-radius: 50px;
+    backdrop-filter: brightness(60%);
+    transition: 0.2s;
+}
+
+.weather .main-icon {
+    width: 100px;
+}
+
+.temp {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.weather .temperature {
+    font-size: 60px;
+}
+
+.weather .hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.temperature+p {
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+.feels-like {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.feels-like .celcius {
+    display: flex;
+    align-items: flex-start;
+}
+
+.feels-like i {
+    font-size: 25px;
+}
+
+hr {
+    border-color: rgb(116, 117, 117);
+}
+
+.card .background {
+    background-size: cover;
+    left: -15px;
+    right: -15px;
+    top: -15px;
+    bottom: -15px;
+    filter: blur(60px);
+    position: absolute;
+    z-index: -1;
+}
+
+.highlight .info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.highlight .info .title {
+    color: white;
+    margin-bottom: 10px;
+}
+
+
+.highlight .info .status {
+    color: rgb(210, 209, 209);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
+
+.status .stat-card {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.status .stat-card .top {
+    display: flex;
+    height: 100%;
+    max-height: 200px;
+    width: 100%;
+    backdrop-filter: brightness(60%);
+    border-radius: 15px;
+    padding: 10px;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.top:first-child {
+    justify-content: space-between;
+}
+
+.status .stat-card .bottom {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    width: 100%;
+    backdrop-filter: brightness(60%);
+    border-radius: 15px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.wind-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.stat p {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.stat .row {
+    align-items: end;
+}
+
+.UV-stat {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+}
+
+.sun-stat {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.sun-stat .left {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.sun-stat i {
+    font-size: 18px;
+    width: min-content;
+}
+
+.sun {
+    color: gold;
+    font-size: 12px;
+    width: min-content;
+}
+
+.humidity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.humidity .number {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+.humidity .number p {
+    margin-bottom: 8px;
+}
+
+.humidity .text {
+    font-size: 10px;
+    width: 45%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.dim {
+    color: rgb(148, 148, 148);
+}
+
+.fs-med {
+    font-size: 20px;
+}
+
+.weather .time {
+    color: white;
+}
+
+.middle-selector {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.mid-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 45%
+}
+
+.mid-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.extra {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.forecast {
+    display: flex;
+    height: 100%;
+    width: 45%;
+    padding-left: 5px;
+    flex-direction: column;
+    gap: 25px;
+    overflow-y: scroll;
+    overflow-x: hidden  ;
+    scrollbar-width: none;
+    position: relative;
+}
+
+.forecast .days {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.forecast .days.first {
+    margin-top: 20px;
+}
+
+.forecast .temp {
+    font-size: 1.7em;
+    display: flex;
+    align-items: flex-end;
+}
+
+.forecast .temp .dim {
+    font-size: 1.3rem;
+}
+
+.forecast .day-month {
+    justify-self: center;
+}
+
+.forecast .dayofweek {
+    justify-self: left;
+}
+
+.tomorrow .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.tomorrow .text .temp {
+    font-size: 1.8em;
+    margin-top: -8px;
+    margin-bottom: -10px;
+}
+
+.tomorrow .text .desc {
+    color: rgb(186, 186, 186);
+    font-size: 0.8rem;
+}
+
+.condition {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.uv-bar{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}

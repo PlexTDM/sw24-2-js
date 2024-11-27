@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <i class="fa-solid fa-sun-plant-wilt"></i>
+                Weather
+            </div>
+            <div class="menu">
+                <div class="item selected">
+                    <i class="fa-solid fa-house selected"></i>
+                </div>
+                <div class="item">
+                    <i class="fa-regular fa-map"></i>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-location-pin"></i>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-earth-europe"></i>
+                </div>
+                <div class="item">
+                    <i class="fa-regular fa-calendar-days"></i>
+                </div>
+                <div class="item">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+            </div>
+
+        </nav>
+        <div class="content">
+            <div class="highlight">
+                <div class="card weather">
+                    <span class="background"></span>
+                    <i class="fa-solid fa-magnifying-glass zoom"></i>
+                    <img src="rain.png" alt="rainy" class="main-icon">
+                    <span class="temp">
+                        <p class="temperature">28
+                        <p>°C</p>
+                        </p>
+                    </span>
+                    <span class="row">
+                        <i class="fa-solid fa-cloud-showers-heavy"></i>
+                        <p>Heavy Rain</p>
+                    </span>
+                    <hr class="hr" />
+                    <span class="row dim">
+                        <i class="fa-solid fa-location-pin"></i>
+                        <p>Ulaanbaatar, Mongolia</p>
+                    </span>
+                    <span class="row dim">
+                        <i class="fa-regular fa-calendar"></i>
+                        <p id="date"></p>
+                        <p class="time"></p>
+                    </span>
+                </div>
+                <div class="card info">
+                    <span class="background"></span>
+                    <p class="title">Today's Highlight</p>
+                    <div class="status">
+                        <div class="stat-card">
+                            <div class="top">
+                                <p>Wind Status</p>
+                                <img src="wind.png" alt="" height="50%" style="object-fit: fill;">
+                                <span class="wind-stat stat">
+                                    <span class="row">
+                                        <h1>7.90</h1>
+                                        <p class="dim">km/s</p>
+                                    </span>
+                                    <p class="time dim"></p>
+                                </span>
+                            </div>
+                            <div class="bottom">
+                                <p class="dim">Humidity</p>
+                                <div class="humidity">
+                                    <span class="number">
+                                        <h1>84</h1>
+                                        <p class="dim">%</p>
+                                    </span>
+                                    <span class="text">
+                                        <i class="fa-solid fa-droplet dim"></i>
+                                        <p class="dim">The dew point is 27°C right now</p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="top">
+                            </div>
+                            <div class="bottom">
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="top">
+                            </div>
+                            <div class="bottom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-selector">
+                <div class="mid-1">
+                    <p>7 Day Forecast</p>
+                </div>
+                <div class="mid-2">
+                    <p>Weather condition map</p>
+                </div>
+            </div>
+            <div class="extra">
+                <div class="card forecast">
+                    <div class="days row first">
+                        <span class="row">
+                            <img src="rain.png" alt="rainy" width="40px" height="40px">
+                            <p class="temp">+29°/<span class="dim">+18</span></p>
+                        </span>
+                        <div class="day-month dim"></div>
+                        <div class="dayofweek"></div>
+                    </div>
+                    <div class="days row">
+                        <span class="row">
+                            <img src="rain.png" alt="rainy" width="40px" height="40px">
+                            <p class="temp">+29°/<span class="dim">+18</span></p>
+                        </span>
+                        <div class="day-month dim"></div>
+                        <div class="dayofweek"></div>
+                    </div>
+                    <div class="days row">
+                        <span class="row">
+                            <img src="rain.png" alt="rainy" width="40px" height="40px">
+                            <p class="temp">+29°/<span class="dim">+18</span></p>
+                        </span>
+                        <div class="day-month dim"></div>
+                        <div class="dayofweek"></div>
+                    </div>
+                    <div class="days row">
+                        <span class="row">
+                            <img src="rain.png" alt="rainy" width="40px" height="40px">
+                            <p class="temp">+29°/<span class="dim">+18</span></p>
+                        </span>
+                        <div class="day-month dim"></div>
+                        <div class="dayofweek"></div>
+                    </div>
+                    <div class="days row">
+                        <span class="row">
+                            <img src="rain.png" alt="rainy" width="40px" height="40px">
+                            <p class="temp">+29°/<span class="dim">+18</span></p>
+                        </span>
+                        <div class="day-month dim"></div>
+                        <div class="dayofweek"></div>
+                    </div>
+                    <div class="days row">
+                        <span class="row">
+                            <img src="rain.png" alt="rainy" width="40px" height="40px">
+                            <p class="temp">+29°/<span class="dim">+18</span></p>
+                        </span>
+                        <div class="day-month dim"></div>
+                        <div class="dayofweek"></div>
+                    </div>
+                    <div class="days row">
+                        <span class="row">
+                            <img src="rain.png" alt="rainy" width="40px" height="40px">
+                            <p class="temp">+29°/<span class="dim">+18</span></p>
+                        </span>
+                        <div class="day-month dim"></div>
+                        <div class="dayofweek"></div>
+                    </div>
+                    <div class="tomorrow" id="tomorrow">
+                        <img src="rain.png" alt="rain" width="80px" height="80px">
+                        <div class="text">
+                            <p class="dim">Tomorrow</p>
+                            <p class="temp">23°</p>
+                            <p class="desc">Rainy all Day</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card condition">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/5cf7186e0d.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
