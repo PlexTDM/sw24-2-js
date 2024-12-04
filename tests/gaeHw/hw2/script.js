@@ -17,10 +17,21 @@ for (let i = 0; i < p.length; i++) {
 console.log(`Total paragraphs: ${p.length}`);
 
 // 4
-const submit = document.getElementById('submit');
-const form = document.getElementById('userForm');
 
-submit.addEventListener('mouseup', e => {
+const form = document.getElementById('userForm');
+const submit = document.getElementById('submit');
+
+submit.addEventListener('click', e => {
     e.preventDefault();
-    console.log(form)
+    const formData = new FormData(form, submit);
+
+    const output = document.getElementById("output");
+
+    for (const [key, value] of formData) {
+        output.innerText += `${key}: ${value}\n`;
+    }
 });
+
+// 5
+const img = document.querySelectorAll('img');
+img[1].src = 'new-image.jpg'

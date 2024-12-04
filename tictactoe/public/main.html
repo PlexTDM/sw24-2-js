@@ -12,10 +12,10 @@
 <body>
 
     <main>
-        <button id="createBtn">
+        <button id="createBtn" onclick="createRoom()">
             Create Room
         </button>
-        <button id="joinBtn" onclick="showRoom()">
+        <button id="joinBtn">
             Join Room
         </button>
 
@@ -39,7 +39,11 @@
                 <span class="close">&times;</span>
             </div>
             <div class="modal-content" id="activeRooms">
-                <p>Some text in the Modal..</p>
+                <form id="enterGame">
+                    <input id="code" type="text" pattern="[A-Za-z]*" minlength="4" maxlength="4" placeholder="Code"
+                        required>
+                    <button><input type="submit" hidden>Play</button>
+                </form>
             </div>
         </div>
     </main>

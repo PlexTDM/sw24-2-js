@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Exercise</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="posts">
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const postsDiv = document.getElementById('posts');
+        const params = new URLSearchParams(window.location.search);
+        const userId = params.get('id');
+        const url = `https://jsonplaceholder.typicode.com/posts?userId=${userId}`;
+        axios.get(url)
+            .then(res => {
+                res.data.map(post => {
+                    console.log(post)
+                    postsDiv.innerHTML += `
+                        <div class='user'>        
+                            <h3>${post.title}</h3>
+                            <h4>${post.body}</h4>
+                        </div>`
+                })
+            })
+            .catch(err => console.error(err));
+    </script>
+</body>
+
+</html>

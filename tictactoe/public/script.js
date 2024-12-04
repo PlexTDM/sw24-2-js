@@ -103,7 +103,9 @@ const restart = () => {
 const socket = io();
 
 socket.on('connect', () => {
-    socket.emit('add', socket.id);
-    console.log('connected')
+    const params = new URLSearchParams(document.location.search);
+    const id = params.get("id");
+    socket.emit('joinRoom', id)
+    console.log('joined Room')
 });
 

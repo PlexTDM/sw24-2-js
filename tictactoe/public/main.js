@@ -1,4 +1,4 @@
-const socket = io('http://192.168.88.42:8081');
+const socket = io();
 
 
 const modal1 = document.getElementById("createModal");
@@ -12,6 +12,10 @@ const close2 = document.getElementsByClassName("close")[1];
 const createName = document.getElementById('createName');
 
 const activeRooms = document.getElementById('activeRooms');
+const enterForm = document.getElementById('enterGame');
+const codeInput = document.getElementById('code');
+
+let loading = false;
 
 const toast = Toastify({
     text: "Added to Cart",
@@ -28,17 +32,12 @@ const toast = Toastify({
 })
 
 // create Modal
-btn.onclick = () => {
-    modal1.style.display = "flex";
-}
-close1.onclick = () => {
-    modal1.style.display = "none";
-}
-window.onclick = (event) => {
-    if (event.target == modal1) {
-        modal1.style.display = "none";
-    }
-}
+// btn.onclick = () => {
+//     modal1.style.display = "flex";
+// }
+// close1.onclick = () => {
+//     modal1.style.display = "none";
+// }
 // join Modal
 btn2.onmouseup = () => {
     modal2.style.display = "flex";
@@ -49,6 +48,7 @@ close2.onclick = () => {
 window.onclick = (event) => {
     if (event.target == modal1) {
         modal1.style.display = "none";
+        modal2.style.display = "none";
     }
 }
 
@@ -57,22 +57,48 @@ socket.on('message', message => {
 });
 
 
-socket.on('getRooms', rooms => {
-    console.log(rooms)
-    activeRooms.innerHTML = ''
-    rooms.forEach(room => {
-        activeRooms.innerHTML += `
-        <span> ${room}</span>
-    `
-    });
+// create room
+const createRoom = () => {
+    socket.emit('createRoom', createName.value);
+    loading = true;
+};
+
+socket.on('createRoom', id => {
+    loading = false;
+    window.location.href = "/game?id=" + id;
+
 })
 
 
-const createRoom = () => {
-    socket.emit('createRoom', createName.value);
-};
+// enter room
 
-const showRoom = () => {
+const joinRoom = id => {
     console.log('req sent')
-    socket.emit('getRooms')
+    socket.emit('getRooms', id)
 }
+
+socket.on('getRooms', id => {
+    if (id === false) return;
+    window.location.href = "/game?id=" + id;
+})
+
+enterForm.addEventListener('submit', e => {
+    e.preventDefault()
+    joinRoom(codeInput.value)
+})
+
+codeInput.addEventListener('keydown', e => {
+    if (
+        !e.key.match(/^[a-zA-Z]$/) &&
+        !['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'].includes(e.key)
+    ) {
+        e.preventDefault();
+    }
+    codeInput.value = codeInput.value.replace(/[^A-Za-z]/g, '').substring(0, 4);
+    if (codeInput.value.length !== 4) {
+        return
+    }
+    if (e.key === 'Enter') {
+        joinRoom(codeInput.value)
+    }
+});
