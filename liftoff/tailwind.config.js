@@ -19,7 +19,6 @@ export default {
         starpurple: '#1a0f31'
       }
     },
-
   },
   plugins: [],
 }

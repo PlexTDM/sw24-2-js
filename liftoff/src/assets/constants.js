@@ -210,8 +210,7 @@ export const pricingData = [{
         title: 'One-On-One Consultation',
         tooltip: "Along with the All Access Pass, you'll get a one-on-one consultation with Mike. We can talk shop, shape up your product, strategize about marketing, or whatever you want! Includes access to private Slack channel.",
     }],
-    buttonText: 'Buy Mentor Pass',
-    popular: true,
+    buttonText: 'Buy Mentor Pass'
 }]
 
 export const dropdownData = [{

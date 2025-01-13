@@ -59,9 +59,9 @@ const Card = ({ chapter, title, description, bg }) => {
                 <p className="mb-2 text-sm font-bold tracking-widest uppercase opacity-80">
                     Chapter {chapter}
                 </p>
-                <h3 className="mb-2 text-2xl sm:text-3xl font-bold leading-[1.2] chapter-explore-title lg:px-6">{title}</h3>
-                <p className="mb-4 opacity-80 chapter-explore-text">{description}</p>
-                <button className="flex items-center cursor-pointer justify-center mx-auto mb-0 font-semibold transition duration-300 ease-in-out w-full lg:opacity-0 group-hover:opacity-100 quick-look-button absolute text-lg translate-x-[-50%] left-[50%]">
+                <h3 className="mb-2 text-2xl sm:text-3xl font-bold leading-[1.2] chapter-explore-title mx-auto">{title}</h3>
+                <p className="mb-4 opacity-80 text-sm">{description}</p>
+                <button className="flex items-center cursor-pointer justify-center mx-auto mb-0 font-semibold transition duration-300 ease-in-out w-full lg:opacity-0 group-hover:opacity-100 quick-look-button absolute text-sm translate-x-[-50%] left-[50%]">
                     Click to Preview
                 </button>
             </div>

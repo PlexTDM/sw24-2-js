@@ -17,6 +17,7 @@ const Landing = () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
+
     return (
         <>
             <div className="px-12 w-full pt-5 pb-12 md:pt-20 sm:pb-16 md:pb-20 lg:pb-40 mx-auto flex lg:flex-row md:flex-col gap-10 max-w-[1400px] ">

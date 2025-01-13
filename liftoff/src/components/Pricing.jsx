@@ -4,7 +4,7 @@ import { pricingData } from '../assets/constants';
 
 const Pricing = () => {
     return (
-        <section className='mx-auto w-full lg:pt-32 md:p-12 text-gray-900'>
+        <section className='mx-auto w-full lg:pt-32 sm:p-4 md:p-6 text-gray-900 overflow-x-hidden'>
             <Title title='Ready for Liftoff?'
                 subTitle="Liftoff is available as an affordable eBook, or a fully-loaded online course experience. Choose your flight path."
             />

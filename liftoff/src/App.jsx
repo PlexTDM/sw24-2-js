@@ -6,11 +6,12 @@ import Features from './components/Features';
 import Mike from './components/Mike';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
+import Footer from './components/Footer';
 
 const App = () => {
 
   return (
-    <div className='bg overflow-visible'>
+    <div className='bg overflow-visible overflow-x-hidden'>
       <Nav />
       <NavMovile />
       <main>
@@ -21,6 +22,7 @@ const App = () => {
         <Pricing />
         <FAQ />
       </main>
+      <Footer />
     </div>
   )
 }
