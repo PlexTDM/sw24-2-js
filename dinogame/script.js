@@ -4,29 +4,39 @@ const ctx = canvas.getContext("2d");
 let isjumping = false;
 let jumpHeight = 0;
 let score = 0;
-let cactusX = canvas.width;
-let birdX = canvas.width * 1.5;
 let gameOver = false;
 
-const dino = { x: 50, y: canvas.height, width: 30, height: 30 };
+// Load images for dino, cactus, and bird
+const dinoImage = new Image();
+dinoImage.src = "dino.png";
+
+const cactusImage = new Image();
+cactusImage.src = "cactus.webp";
+
+const birdImage = new Image();
+birdImage.src = "bird.png";
+
+const dino = { x: 50, y: canvas.height - 40, width: 40, height: 40 };
+const cactus = { x: canvas.width, y: canvas.height - 35, width: 30, height: 40 };
+const bird = { x: canvas.width * 1.5, y: 100, width: 50, height: 30 };
+
 const drawDino = () => {
-    ctx.fillStyle = "green";
-    ctx.fillRect(dino.x, dino.y - dino.height - jumpHeight, dino.width, dino.height);
-}
+    ctx.drawImage(dinoImage, dino.x, dino.y - jumpHeight, dino.width, dino.height);
+};
+
 const drawCactus = () => {
-    ctx.fillStyle = "brown";
-    ctx.fillRect(cactusX, canvas.height - 30, 20, 30);
-}
+    ctx.drawImage(cactusImage, cactus.x, cactus.y, cactus.width, cactus.height);
+};
+
 const drawBird = () => {
-    ctx.fillStyle = "blue";
-    ctx.fillRect(birdX, canvas.height - 90, 20, 30);
-}
+    ctx.drawImage(birdImage, bird.x, bird.y, bird.width, bird.height);
+};
 
 document.addEventListener("keydown", e => {
     if (e.code === "Space" && !isjumping) {
         isjumping = true;
         let jumpInterval = setInterval(() => {
-            if (jumpHeight < 60) {
+            if (jumpHeight < 70) {
                 jumpHeight += 3;
             } else {
                 clearInterval(jumpInterval);
@@ -44,43 +54,49 @@ document.addEventListener("keydown", e => {
 });
 
 const moveCactus = () => {
-    cactusX -= 5;
-    if (cactusX < -20) {
-        cactusX = canvas.width;
+    cactus.x -= 5;
+    if (cactus.x < -cactus.width) {
+        cactus.x = canvas.width;
         score++;
     }
-}
+};
 
 const moveBird = () => {
-    birdX -= 5;
-    if (birdX < -20) {
-        birdX = canvas.width;
+    bird.x -= 5;
+    if (bird.x < -cactus.width) {
+        bird.x = canvas.width;
+        bird.y = 100;
         score++;
     }
-}
+};
 
-const checkCollsion = () => {
+const checkCollision = () => {
+    // Collision with cactus
     if (
-        cactusX < dino.x + dino.width &&
-        cactusX + 20 > dino.x &&
-        canvas.height - 30 < dino.y - jumpHeight
-    ) {
-
-        gameOver = true;
-        alert("game over your score: " + score);
-        document.location.reload();
-    }
-
-    if (
-        birdX < dino.x + dino.width &&
-        birdX + 20 > dino.x &&
-        canvas.height - 30 > dino.y - jumpHeight
+        cactus.x < dino.x + dino.width &&
+        cactus.x + cactus.width > dino.x &&
+        cactus.y < dino.y + dino.height &&
+        cactus.y + cactus.height > dino.y + jumpHeight
     ) {
         gameOver = true;
-        alert("game over your score: " + score);
+        alert("Game over! Your score: " + score);
         document.location.reload();
+        gameOver = false;
     }
-}
+
+    // Collision with bird
+    if (
+        bird.x < dino.x + dino.width &&
+        bird.x + bird.width > dino.x &&
+        bird.y < dino.y + dino.height &&
+        bird.y + bird.height >= dino.y - jumpHeight
+    ) {
+        gameOver = true;
+        alert("Game over! Your score: " + score);
+        document.location.reload();
+        gameOver = false;
+    }
+};
 
 const gameLoop = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -88,14 +104,20 @@ const gameLoop = () => {
     drawDino();
     drawCactus();
     drawBird();
-    if (gameOver) return;
-    moveBird();
     moveCactus();
-    checkCollsion();
+    moveBird();
+    checkCollision();
 
-    document.getElementById("score").textContent = `Score ${score}`;
+    document.getElementById("score").textContent = `Score: ${score}`;
 
-    requestAnimationFrame(gameLoop);
-}
+    if (!gameOver) {
+        requestAnimationFrame(gameLoop);
+    }
+};
 
-gameLoop();
+// Start the game loop after the images are loaded
+dinoImage.onload = () => {
+    cactusImage.onload = () => {
+        gameLoop();
+    };
+};
